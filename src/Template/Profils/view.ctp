@@ -56,6 +56,14 @@
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($profil->id) ?></td>
         </tr>
+        <tr>
+            <th scope="row"><?= __('Created') ?></th>
+            <td><?= h($profil->created) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Modified') ?></th>
+            <td><?= h($profil->modified) ?></td>
+        </tr>
     </table>
     <div class="related">
         <h4><?= __('Related Owners') ?></h4>

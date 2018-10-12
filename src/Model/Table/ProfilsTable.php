@@ -20,6 +20,8 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Profil patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Profil[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Profil findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ProfilsTable extends Table
 {
@@ -37,6 +39,8 @@ class ProfilsTable extends Table
         $this->setTable('profils');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',

@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Transactions Model
  *
- * @property |\Cake\ORM\Association\BelongsTo $Accounts
+ * @property \App\Model\Table\AccountsTable|\Cake\ORM\Association\BelongsTo $Accounts
  *
  * @method \App\Model\Entity\Transaction get($primaryKey, $options = [])
  * @method \App\Model\Entity\Transaction newEntity($data = null, array $options = [])

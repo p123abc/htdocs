@@ -12,34 +12,32 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
-        public function isAuthorized($user)
-    {
-        // Par défaut, on refuse l'accès.
-        return false;
-    }
-        public function initialize()
+    
+            public function initialize()
     {
         parent::initialize();
+        // Ajoute l'action 'add' à la liste des actions autorisées.
         $this->Auth->allow(['logout', 'add']);
     }
-
-    public function logout()
+    
+        public function logout()
     {
         $this->Flash->success('Vous avez été déconnecté.');
         return $this->redirect($this->Auth->logout());
     }
     
-    public function login()
+        public function login()
     {
-    if ($this->request->is('post')) {
-        $user = $this->Auth->identify();
-        if ($user) {
-            $this->Auth->setUser($user);
-            return $this->redirect($this->Auth->redirectUrl());
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
             }
-        $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
+            $this->Flash->error('Votre identifiant ou votre mot de passe est incorrect.');
         }
     }
+    
     /**
      * Index method
      *

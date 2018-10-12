@@ -12,35 +12,34 @@ use App\Controller\AppController;
  */
 class ProfilsController extends AppController
 {
-    
         public function isAuthorized($user)
     {
-       // JE NE VEUX PAS QUE N'IMPORTE QUI ADD OU EDIT LES PROFILS DES AUTRES !!!!
-       /**
         $action = $this->request->getParam('action');
         // Les actions 'add' et 'tags' sont toujours autorisés pour les utilisateur
         // authentifiés sur l'application
-        if (in_array($action, ['add', 'tags'])) {
+        if (in_array($action, ['add'])) {
             return true;
         }
-        * */
         
+        if (in_array($action, ['delete'])) {
+            return false;
+        }
 
         // Toutes les autres actions nécessitent un slug
         $id = $this->request->getParam('pass.0');
         if (!$id) {
             return false;
         }
-        
-        
 
-        // On vérifie que l'article appartient à l'utilisateur connecté OU SI NOUS SOME SUR UN USER DE TYPE ADMIN
+        // On vérifie que l'article appartient à l'utilisateur connecté
         $profil = $this->Profils->findById($id)->first();
-        if ($user['type'] == "admin") {
-           return true;
-        }else{
-        return $profil->user_id === $user['id'];
+        if ($user['type'] === 'admin' ) {
+            return true;
+        }else {
+            return $profil->user_id === $user['id'];
         }
+        
+        
     }
 
     /**
@@ -84,10 +83,6 @@ class ProfilsController extends AppController
         $profil = $this->Profils->newEntity();
         if ($this->request->is('post')) {
             $profil = $this->Profils->patchEntity($profil, $this->request->getData());
-            
-            // Changé : On force le user_id à celui de la session
-            $profil->user_id = $this->Auth->user('id');
-            
             if ($this->Profils->save($profil)) {
                 $this->Flash->success(__('The profil has been saved.'));
 
@@ -112,10 +107,7 @@ class ProfilsController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $profil = $this->Profils->patchEntity($profil, $this->request->getData(), [
-            // Ajouté : Empêche la modification du user_id.
-            'accessibleFields' => ['user_id' => false]
-        ]);
+            $profil = $this->Profils->patchEntity($profil, $this->request->getData());
             if ($this->Profils->save($profil)) {
                 $this->Flash->success(__('The profil has been saved.'));
 

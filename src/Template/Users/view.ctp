@@ -49,6 +49,8 @@
                 <th scope="col"><?= __('Postalcode') ?></th>
                 <th scope="col"><?= __('Email') ?></th>
                 <th scope="col"><?= __('Photo') ?></th>
+                <th scope="col"><?= __('Created') ?></th>
+                <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($user->profils as $profils): ?>
@@ -62,6 +64,8 @@
                 <td><?= h($profils->postalcode) ?></td>
                 <td><?= h($profils->email) ?></td>
                 <td><?= h($profils->photo) ?></td>
+                <td><?= h($profils->created) ?></td>
+                <td><?= h($profils->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Profils', 'action' => 'view', $profils->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Profils', 'action' => 'edit', $profils->id]) ?>

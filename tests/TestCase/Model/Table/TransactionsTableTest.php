@@ -24,7 +24,8 @@ class TransactionsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.transactions'
+        'app.transactions',
+        'app.accounts'
     ];
 
     /**
@@ -57,6 +58,26 @@ class TransactionsTableTest extends TestCase
      * @return void
      */
     public function testInitialize()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test validationDefault method
+     *
+     * @return void
+     */
+    public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

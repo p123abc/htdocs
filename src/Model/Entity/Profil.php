@@ -15,6 +15,8 @@ use Cake\ORM\Entity;
  * @property string $postalcode
  * @property string $email
  * @property string $photo
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Owner[] $owners
@@ -40,6 +42,8 @@ class Profil extends Entity
         'postalcode' => true,
         'email' => true,
         'photo' => true,
+        'created' => true,
+        'modified' => true,
         'user' => true,
         'owners' => true
     ];
