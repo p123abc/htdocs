@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2018 at 04:09 AM
+-- Generation Time: Nov 09, 2018 at 05:22 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -115,6 +115,26 @@ INSERT INTO `profils` (`id`, `user_id`, `name`, `firstname`, `address`, `phone`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tests`
+--
+
+CREATE TABLE `tests` (
+  `code` int(255) NOT NULL,
+  `name` varchar(255) COLLATE utf32_unicode_ci NOT NULL,
+  `number` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Dumping data for table `tests`
+--
+
+INSERT INTO `tests` (`code`, `name`, `number`) VALUES
+(1, 'pat', 20),
+(2, 'pap', 20);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transactions`
 --
 
@@ -190,6 +210,12 @@ ALTER TABLE `profils`
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `tests`
+--
+ALTER TABLE `tests`
+  ADD PRIMARY KEY (`code`);
+
+--
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -229,6 +255,12 @@ ALTER TABLE `owners`
 --
 ALTER TABLE `profils`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tests`
+--
+ALTER TABLE `tests`
+  MODIFY `code` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transactions`
