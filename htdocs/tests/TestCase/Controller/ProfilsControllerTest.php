@@ -28,7 +28,9 @@ class ProfilsControllerTest extends IntegrationTestCase
      */
     public function testIndex()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/profils');
+    
+        $this->assertResponseOk();
     }
 
     /**
@@ -38,7 +40,9 @@ class ProfilsControllerTest extends IntegrationTestCase
      */
     public function testView()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/profils/view/1');
+    
+        $this->assertResponseOk();
     }
 
     /**
@@ -48,7 +52,9 @@ class ProfilsControllerTest extends IntegrationTestCase
      */
     public function testAdd()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/profils/add');
+    
+        $this->assertRedirect('/users/login?redirect=%2Fprofils%2Fadd');
     }
 
     /**
@@ -58,7 +64,9 @@ class ProfilsControllerTest extends IntegrationTestCase
      */
     public function testEdit()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/profils/add');
+    
+        $this->assertRedirect('login');
     }
 
     /**
